@@ -2,9 +2,9 @@
   "name": "pegasuswebsite",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/RickMaior/PegasusWebsite/issues"
   },
-  "homepage": "https://github.com/RickMaior/PegasusWebsite#readme"
+  "homepage": "https://github.com/RickMaior/PegasusWebsite#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
 }
