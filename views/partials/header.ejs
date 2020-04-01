@@ -4,10 +4,10 @@
   <ul>
     <li><a href="/">Home</a></li>
 
-    <%if (!token){ %>
-    <li><a href="/api/discord/login">Login </a></li>
+    <%if (!user){ %>
+    <li style="float:right"><a href="/api/discord/login">Login </a></li>
     <% }else{ %>
-    <li><a>Logged in</a></li>
+    <li style="float:right"><a href="/">log out</a></li>
     <%} %>
   </ul>
 </nav>

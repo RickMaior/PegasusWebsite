@@ -4,15 +4,30 @@ const app = express();
 const path = require("path");
 // var port = process.env.PORT || 50451;
 var port = 50451;
+const fetch = require("node-fetch");
 
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  console.log(req.query);
+app.get("/", async (req, res) => {
+  let token = req.query.token;
+  console.log(token);
+  let user;
+  if (token) {
+    const response = await fetch(`https://discordapp.com/api/users/@me `, {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+    user = await response.json();
+    // console.log(user);
+  }
+
   res.status(200).render("pages/index", {
-    token: req.query.token
+    imageUrl: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
+    user: user
   });
 });
 
