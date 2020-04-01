@@ -2,12 +2,21 @@
 
 <nav>
   <ul>
-    <li><a href="/">Home</a></li>
+    <li title="Home page"><a href="/">Home</a></li>
+   
 
     <%if (!user){ %>
     <li style="float:right"><a href="/api/discord/login">Login </a></li>
     <% }else{ %>
-    <li style="float:right"><a href="/">log out</a></li>
+    <li style="float:right" class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn"><%=user.username%></a>
+            <div class="dropdown-content">
+                <a href="" title="Profile" target="_blank"> Profile </a>
+                <a href="" title="Servers" target="_blank"> Servers </a>
+            </div>
+        
+    </li>
     <%} %>
   </ul>
+  
 </nav>

@@ -12,6 +12,7 @@ app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   let token = req.query.token;
+  let imageUrl;
   console.log(token);
   let user;
   if (token) {
@@ -22,11 +23,12 @@ app.get("/", async (req, res) => {
       }
     });
     user = await response.json();
-    // console.log(user);
+    imageUrl=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+    //console.log(user);
   }
 
   res.status(200).render("pages/index", {
-    imageUrl: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
+    imageUrl: imageUrl,
     user: user
   });
 });
