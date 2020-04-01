@@ -7,10 +7,9 @@ var port = 50451;
 const app = express();
 
 app.get("/", (req, res) => {
+  console.log(req.query);
   res.status(200).sendFile(path.join(__dirname, "index.html"));
 });
-
-
 
 app.listen(port, function() {
   console.log("listening on *:" + port);
