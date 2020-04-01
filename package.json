@@ -1,0 +1,19 @@
+{
+  "name": "pegasuswebsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RickMaior/PegasusWebsite.git"
+  },
+  "author": "rickmaior",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RickMaior/PegasusWebsite/issues"
+  },
+  "homepage": "https://github.com/RickMaior/PegasusWebsite#readme"
+}
