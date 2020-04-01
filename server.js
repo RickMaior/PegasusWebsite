@@ -2,8 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require("path");
-// var port = process.env.PORT || 50451;
-var port = 50451;
+ var port = process.env.PORT || 50451;
+
 const fetch = require("node-fetch");
 
 app.set("view engine", "ejs");
