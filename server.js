@@ -1,14 +1,19 @@
 require("dotenv").config();
 const express = require("express");
+const app = express();
 const path = require("path");
 // var port = process.env.PORT || 50451;
 var port = 50451;
 
-const app = express();
+app.set("view engine", "ejs");
+
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   console.log(req.query);
-  res.status(200).sendFile(path.join(__dirname, "index.html"));
+  res.status(200).render("pages/index", {
+    token: req.query.token
+  });
 });
 
 app.listen(port, function() {

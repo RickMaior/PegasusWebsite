@@ -1,0 +1,13 @@
+<!-- views/partials/header.ejs -->
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+
+    <%if (!token){ %>
+    <li><a href="/api/discord/login">Login </a></li>
+    <% }else{ %>
+    <li><a>Logged in</a></li>
+    <%} %>
+  </ul>
+</nav>
