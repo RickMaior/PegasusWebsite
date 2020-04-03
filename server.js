@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require("path");
- var port = process.env.PORT || 50451;
+var port = process.env.PORT || 50451;
 
 const fetch = require("node-fetch");
 
@@ -10,26 +10,35 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
-app.get("/", async (req, res) => {
-  let token = req.query.token;
-  let imageUrl;
-  console.log(token);
-  let user;
-  if (token) {
-    const response = await fetch(`https://discordapp.com/api/users/@me `, {
+const authMiddleware = async (req, res, next) => {
+  if (req.query.token) {
+    const user = await fetch(`https://discordapp.com/api/users/@me`, {
       method: "GET",
       headers: {
-        Authorization: "Bearer " + token
+        Authorization: "Bearer " + req.query.token
       }
-    });
-    user = await response.json();
-    imageUrl=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-    //console.log(user);
+    }).then(res => res.json());
+
+    res.locals.user = {
+      ...user,
+      avatarUrl: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+    };
+  } else {
+    res.locals.user = null;
   }
 
+  next();
+};
+
+app.use(authMiddleware);
+
+app.get("/", async (req, res) => {
+
+  console.log(res.locals.user);
+
   res.status(200).render("pages/index", {
-    imageUrl: imageUrl,
-    user: user
+    imageUrl: res.locals.user.avatarUrl,
+    user: res.locals.user
   });
 });
 
