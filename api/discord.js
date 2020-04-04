@@ -34,7 +34,9 @@ router.get(
       }
     );
     const json = await response.json();
+    console.log(json)
     res.redirect(`/?token=${json.access_token}`);
+    
   })
 );
 

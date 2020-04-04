@@ -37,7 +37,7 @@ app.get("/", async (req, res) => {
   console.log(res.locals.user);
 
   res.status(200).render("pages/index", {
-    imageUrl: res.locals.user.avatarUrl,
+
     user: res.locals.user
   });
 });
