@@ -1,0 +1,11 @@
+<!-- views/partials/cookieConsent.ejs -->
+
+<script>
+  if (!localStorage.acceptCookie) {
+    if (!confirm("This page uses cookies. Do you accept that?")) {
+      window.stop();
+    } else {
+      localStorage.acceptCookie = true;
+    }
+  }
+</script>

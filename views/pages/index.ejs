@@ -2,10 +2,15 @@
 <html>
   <head>
     <%- include ("../partials/head") %>
+    <%- include ("../partials/cookieConsent")%> 
   </head>
   <body>
-    <%- include ("../partials/header")%> <%if (user && user.username) { %>
+   
+    <%- include ("../partials/header")%> 
+    <%if (user && user.username) { %>
     <div>Welcome: <%=user.username%></div>
     <img src=<%=user.avatarUrl %> alt="User avatar"> <% } %>
+
+    
   </body>
 </html>

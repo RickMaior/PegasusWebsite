@@ -34,8 +34,9 @@ router.get(
       }
     );
     const json = await response.json();
-    console.log(json)
-    res.redirect(`/?token=${json.access_token}`);
+    //console.log(json)
+    res.cookie("token",json.access_token, {maxAge: 5 * 60 * 1000})
+    res.redirect(`/`);
     
   })
 );
