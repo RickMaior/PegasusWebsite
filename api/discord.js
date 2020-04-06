@@ -1,3 +1,5 @@
+//  "/api/discord"
+
 const express = require("express");
 const fetch = require("node-fetch");
 const btoa = require("btoa");
@@ -16,6 +18,11 @@ router.get("/login", (req, res) => {
   res.redirect(
     `https://discordapp.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirect}&response_type=code&scope=email%20identify`
   );
+});
+
+router.get("/logout", (req,res)=>{
+  res.clearCookie("token")
+  res.redirect(`/`);
 });
 
 router.get(
